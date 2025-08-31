@@ -59,7 +59,6 @@ apps/
    └─ router.py         # сборка маршрутов /api/v1/...
 migrations/             # Alembic-миграции
 ruff/                   # линт/формат
-tests/                  # pytest + фабрики
 .env
 .pre-commit-config.yaml
 README.md
