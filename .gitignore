@@ -1,0 +1,24 @@
+coverage/
+
+build/
+
+.DS_Store
+*.pem
+
+package-lock.json
+yarn.lock
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+.docker/
+
+.env*.local
+venv
+.env
+.venv
+
+# idea
+.idea
+
+/temp.*
+

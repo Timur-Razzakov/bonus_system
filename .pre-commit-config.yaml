@@ -1,0 +1,15 @@
+repos:
+  - repo: local
+    hooks:
+      - id: ruff-format
+        name: Format code with ruff
+        entry: ruff format .
+        language: system
+        types: [python]
+
+      - id: ruff-lint
+        name: Lint code with ruff
+        entry: ruff check .  --fix
+        language: system
+        types: [python]
+        exclude: ^(tests|migrations|alembic|\.venv|venv|lib)/

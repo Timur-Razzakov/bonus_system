@@ -1,0 +1,6 @@
+-r base.txt
+
+async_factory_boy
+pytest-cov
+pytest-mock
+psycopg2-binary

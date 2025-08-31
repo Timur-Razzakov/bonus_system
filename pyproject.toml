@@ -1,0 +1,72 @@
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+extend-exclude = [
+    "migrations",
+    "alembic",
+    ".venv",
+    "venv",
+    "lib",
+    "tests"
+]
+preview = true  # включает форматирование как у black
+unsafe-fixes = false
+force-exclude = true
+
+[tool.ruff.lint]
+select = [
+    "F",  # баги
+    "E",  # стиль
+    "W",  # стиль
+    "I",  # импорты
+    "B",  # bugbear
+    "UP", # pyupgrade (если > Python 3.9)
+]
+
+ignore = [
+    "PLW3201",
+    "FBT001",
+    "FBT002",
+    "N815",
+    "N999",
+    "DTZ001",
+    "B008",
+    "S101", # assert is used
+    "D", # Отключаем требования к docstring'ам (Dxxx из pydocstyle)
+    "UP037", # Не заставлять заменять Tuple[str] на tuple[str]
+    "TRY003", # Разрешить try без except Exception
+    "B904", # Разрешить try внутри цикла (ранее назывался TRY200)
+    "CPY001", # чтобы не просили прописывать такое "Добавь комментарий вроде # © 2025 Timur"
+    "BLE001", # (ВРЕМЕННО ) ругается из-за Exception, пихаем всё, а нужно только нужные
+    "TRY301", # игнорируем raise MessageException, предлагают это в функцию обернуть и вызывать
+    "PLR0913",
+    "PLC0415", # импорты
+    "RUF029", # проверяет есть ли в асинхронной функции await
+    "EM101", # относится к ошибке PLR2004 требует то же самое, но для ошибок
+    "PLR2004", # чтобы игнорировать  if status > 299: когда передаём значения, а не создаём переменную (ВРЕМЕННО)
+]
+
+fixable = ["ALL"]
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+combine-as-imports = true
+force-sort-within-sections = true
+
+[tool.ruff.format]
+quote-style = "double"               # Одинарные кавычки => двойные
+indent-style = "space"              # Отступы пробелами
+line-ending = "auto"                # Использовать переносы строки как в системе (LF или CRLF)
+skip-magic-trailing-comma = false   # Сохраняем запятые в кортежах, списках и т.п.
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.flake8-type-checking]
+runtime-evaluated-base-classes = []
+
+[tool.ruff.lint.pep8-naming]
+# Проверки на корректные имена переменных, функций и классов
+classmethod-decorators = ["classmethod"]
+staticmethod-decorators = ["staticmethod"]
