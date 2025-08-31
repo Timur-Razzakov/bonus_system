@@ -26,6 +26,8 @@ class Level(BaseModel):
     __tablename__ = "levels"
     title: Mapped[str] = mapped_column(String(100), nullable=False)
     order: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    history = relationship("PlayerHistory", back_populates="level")
     level_prizes = relationship("LevelPrize", back_populates="level")
     player_levels = relationship("PlayerLevel", back_populates="level")
+
     __table_args__ = (Index("ix_levels_order", "order"),)

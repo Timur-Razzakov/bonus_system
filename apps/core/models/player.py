@@ -38,6 +38,7 @@ class PlayerHistory(BaseModel):
     prize_id: Mapped[int] = mapped_column(ForeignKey("prizes.id", ondelete="CASCADE"), nullable=False)
 
     player = relationship("Player", back_populates="history")
+    level = relationship("Level", back_populates="history")
     prize = relationship("Prize")
 
     __table_args__ = (
